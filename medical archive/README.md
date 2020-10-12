@@ -1,0 +1,1 @@
+loginPage: only frame page 
