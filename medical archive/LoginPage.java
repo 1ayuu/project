@@ -16,6 +16,14 @@ import java.awt.Font;
 import java.awt.Image;
 import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
+
+import register.register;
+
+import register.register1;
+import register.register2;
+import register.register3;
+
+
 import javax.swing.JTextField;
 import java.awt.SystemColor;
 import javax.swing.JDesktopPane;
@@ -24,14 +32,17 @@ import javax.swing.JButton;
 import javax.swing.JSeparator;
 import javax.swing.JSlider;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class LoginPage {
 
-	private JFrame frame;
+	JFrame frame;
 	private JTextField txtUsername;
 	private JTextField txtPassword;
 	private JLabel Label_minimize;
@@ -132,7 +143,7 @@ public class LoginPage {
 		panel_1.add(lblNewLabel_1);
 		
 		pwdPassword = new JPasswordField();
-		pwdPassword.setText("     ******");
+		pwdPassword.setText("     password");
 		pwdPassword.setBorder(new LineBorder(SystemColor.control, 3, true));
 		pwdPassword.setToolTipText("    password");
 		pwdPassword.setBackground(SystemColor.control);
@@ -140,13 +151,40 @@ public class LoginPage {
 		panel_1.add(pwdPassword);
 		
 		JButton btnNewButton = new JButton("Login");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0e)
+			{
+				String password =pwdPassword.getText();
+				String username = txtUsername.getText();
+				if (password.contains("password")&& username.contains("username"))
+				{
+					pwdPassword.setText(null);
+				    txtUsername.setText(null);
+				  
+				
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null,"Invalid Login Detail",username, JOptionPane.ERROR_MESSAGE);
+				}
+
+				
+			}
+		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnNewButton.setBorder(new LineBorder(new Color(240, 240, 240)));
 		btnNewButton.setBackground(SystemColor.control);
-		btnNewButton.setBounds(73, 313, 89, 40);
+		btnNewButton.setBounds(54, 309, 89, 40);
 		panel_1.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Create Account");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				register info =new register();
+				register.main(null);
+				
+			}
+		});
 		btnNewButton_1.setBackground(SystemColor.control);
 		btnNewButton_1.setForeground(new Color(255, 0, 0));
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -156,6 +194,14 @@ public class LoginPage {
 		JSeparator separator = new JSeparator();
 		separator.setBounds(38, 279, 356, 2);
 		panel_1.add(separator);
+		
+		JSeparator separator_2 = new JSeparator();
+		separator_2.setBounds(38, 97, 1, 2);
+		panel_1.add(separator_2);
+		
+		JSeparator separator_3 = new JSeparator();
+		separator_3.setBounds(38, 113, 356, 2);
+		panel_1.add(separator_3);
 		
 		
 		JLabel Lable_close = new JLabel(" x");
